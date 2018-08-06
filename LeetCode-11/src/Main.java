@@ -33,10 +33,26 @@ public class Main {
                 temp = (temp < (j-i)*h) ? (j-i)*h : temp;
             }
         }
-
         return temp;
+    }
 
+    /**
+     * 雙指針法
+     * 面積大小取決於 最短的 and 索引的差值
+     * 兩指針：指向頭、指向尾
+     * 移動較短的指針，當指針頭 > 尾 時結束
+     */
 
+    public static int maxArae1(int[] height) {
+        int head = 0;
+        int rear = height.length-1;
+        int max = 0;
+        while (head < rear) {
+            int m = rear - head;
+            int h = (height[head] < height[rear]) ? height[head++] : height[rear--];
+            max = (max < m*h) ? m*h : max;
+        }
+        return max;
     }
 
     public static void main(String[] args) {

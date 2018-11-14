@@ -27,6 +27,7 @@ public class Main {
 	// write your code here
         String s = "aad";
         System.out.println(firstUniqChar(s));
+        System.out.println(firstUniqChar1(s));
     }
 
 
@@ -36,7 +37,10 @@ public class Main {
      *  list: 字符类型的，可变数组，用来存放已经重复出现的字符
      *  flag: 标签，flag为false时，返回当前的i
      *
-     *  
+     *  先判断 i 是否在 list 中存在
+     *      存在：跳出当前循环，进行下一次循环
+     *      不存在：查找 j 是否与 i 相同的
+     *          存在相同： 添加到list中, flag = true, 跳出循环
      * */
     public static int firstUniqChar(String s) {
         char[] str = s.toCharArray();
@@ -46,12 +50,10 @@ public class Main {
 
         for (int i = 0; i < len; i++ ) {
             flag = false;
-
             if (list.contains(str[i])) {
                 continue;
             }
             for (int j = i+1; j < len; j++) {
-
                 if (str[i] == str[j]) {
                     list.add(str[i]);
                     flag = true;
@@ -64,4 +66,25 @@ public class Main {
 
         return -1;
     }
+
+    /**
+     * 从26个小写英语字母出发
+     * 遍历字母
+     * 查找当前字母在 s 中第一次出现的索引 resulit
+     *      result = -1; 不存在
+     *      result 如果和 s 的最后一次出现的索引相同，说明该字符只出现一次
+     *
+     * */
+    public static int firstUniqChar1(String s) {
+        int result = -1;
+        for (char ch = 'a'; ch <= 'z'; ch++) {
+            int index = s.indexOf(ch);
+            if (index != -1 && index == s.lastIndexOf(ch)) {
+                result = (result == -1) ? index : Math.min(result, index);
+            }
+        }
+
+        return result;
+    }
 }
+

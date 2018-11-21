@@ -77,7 +77,7 @@ public class Main {
         while (i < str.length() && str.charAt(i)>='0' && str.charAt(i)<='9') {
             // 如果`anwseer > MAX_VALUE/10`，那么`base*10 + new_value` > `base*10` > `MAX_VALUE`。这个应该很容易理解，这种情况下就会发生溢出。
             // 若`anwseer == MAX_VALUE/10`，而且`new_value = str.charAt(i++) - '0'`大于`7`，也会发生溢出。因为`MAX_VALUE = 2147483647
-            if (anwser >= Integer.MAX_VALUE/10 || (anwser == Integer.MAX_VALUE / 10 && str.charAt(i) > '7')) {
+            if (anwser > Integer.MAX_VALUE/10 || (anwser == Integer.MAX_VALUE / 10 && str.charAt(i) > '7')) {
                 return (sign == 1) ? Integer.MAX_VALUE : Integer.MIN_VALUE;
             }
             anwser = anwser*10 + (str.charAt(i++) - '0');

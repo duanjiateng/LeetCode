@@ -53,6 +53,7 @@ public class Main {
      * */
     public static String countAndSay(int n) {
         String num = "1";
+        
         while (--n > 0) {
             num = next(num);
         }

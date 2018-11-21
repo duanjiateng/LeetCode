@@ -1,4 +1,4 @@
-
+package com.company;
 
 /**
  * 字符串转换整数 (atoi)
@@ -48,12 +48,13 @@
  * */
 public class Main {
     public static void main(String[] args) {
-        System.out.println(myAtoi(" "));
+        System.out.println(myAtoi("2147483646"));
     }
 
     public static int myAtoi(String str) {
+        //除去字符串的空白
+        str = str.trim();
 
-        str = str.replace(" ","");
         //判断合法性
         if (str.isEmpty())
             return 0;
@@ -67,25 +68,21 @@ public class Main {
         //转换值
         int anwser = 0;
 
-        //除去字符串的空白
-        while (str.charAt(i) == ' ' && i < str.length()) {
-            i++;
-        }
-
         //判断正负号
         if (str.charAt(i) == '-' || str.charAt(i) == '+'){
-            sign = (str.charAt(i) == '-') ? -1 : 1;
+            sign = (str.charAt(i++) == '-') ? -1 : 1;
         }
 
         //找出有效数字
-        while (i < str.length() && str.charAt(i)>'0' && str.charAt(i)<'9') {
+        while (i < str.length() && str.charAt(i)>='0' && str.charAt(i)<='9') {
             // 如果`anwseer > MAX_VALUE/10`，那么`base*10 + new_value` > `base*10` > `MAX_VALUE`。这个应该很容易理解，这种情况下就会发生溢出。
-            if (anwser > Integer.MAX_VALUE/10) {
+            // 若`anwseer == MAX_VALUE/10`，而且`new_value = str.charAt(i++) - '0'`大于`7`，也会发生溢出。因为`MAX_VALUE = 2147483647
+            if (anwser >= Integer.MAX_VALUE/10 || (anwser == Integer.MAX_VALUE / 10 && str.charAt(i) > '7')) {
                 return (sign == 1) ? Integer.MAX_VALUE : Integer.MIN_VALUE;
             }
             anwser = anwser*10 + (str.charAt(i++) - '0');
-        }
 
+        }
         return anwser*sign;
 
         

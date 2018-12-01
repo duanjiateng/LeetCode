@@ -69,5 +69,21 @@ public class Main {
         return left && inorder(root.right, pre);
     }
 
+    /**
+     * 从定义出发，满足当前结点　大于　左子树；小于　右子树
+     * */
+    public boolean isValidBST1(TreeNode root) {
+
+        return inorder1(root, Long.MIN_VALUE, Long.MAX_VALUE);
+    }
+
+    private boolean inorder1(TreeNode root, long min, long max) {
+        if (root == null)
+            return true;
+        if (root.val <= min || root.val >= max) {
+            return false;
+        }
+        return inorder1(root.left, min, (long)root.val) && inorder1(root.right, (long)root.val, max);
+    }
     
 }

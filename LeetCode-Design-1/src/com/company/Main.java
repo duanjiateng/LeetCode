@@ -62,7 +62,7 @@ public class Main {
     /** Returns a random shuffling of the array. */
     /**
      * 使用Random随机将下标找出来
-     * 将copy[i],copy[]
+     * 将copy[i],copy[]交换
      * */
     public int[] shuffle() {
         int[] copy = Arrays.copyOf(nums, nums.length);

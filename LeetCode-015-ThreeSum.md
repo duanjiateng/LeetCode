@@ -36,6 +36,7 @@ nums[j] + nums[k] < target - nums[i]　说明小的值太小，让j指针向前�
 
 #### 	代码：
 
+```java
 class Solution {
     public List<List<Integer>> threeSum(int[] nums) {
         List<List<Integer>> result = new LinkedList<>();
@@ -72,4 +73,6 @@ class Solution {
         return result;
     }
 }
+
+```
 

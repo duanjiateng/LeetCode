@@ -10,7 +10,7 @@
 
 问总共有多少条不同的路径？
 
-![img](/home/djt/blog/source/images/robot_maze.png)
+![img](images/robot_maze.png)
 
 例如，上图是一个7 x 3 的网格。有多少可能的路径？
 

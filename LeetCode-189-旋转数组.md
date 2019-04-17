@@ -85,3 +85,36 @@ class Solution {
 }
 ```
 
+### 3. 其他解法：
+
+```java
+/**
+ * 每次移动1个位置
+ * 移动k次
+ * */
+public void rotate(int[] nums, int k) {
+    int temp, kk;
+    kk = k%nums.length;
+    for (int i = 0; i < kk; i++) {
+        temp = nums[nums.length-1];
+        for (int j = nums.length-1; j > 0; j--) {
+            nums[j] = nums[j-1];
+        }
+        nums[0] = temp;
+    }
+}
+
+/**
+ * 新建一个等大数组，用空间换取时间
+ * */
+public void rotate2(int[] nums, int k) {
+    int[] new_nums = new int[nums.length];
+    for (int i = 0; i < nums.length; i++) {
+        new_nums[(i+k)%nums.length] = nums[i];
+    }
+
+    for (int i = 0; i < nums.length; i++) {
+        nums[i] = new_nums[i];
+    }
+}
+```

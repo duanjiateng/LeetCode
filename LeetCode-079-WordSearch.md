@@ -65,6 +65,7 @@ class Solution {
         char ch = word.charAt(count);
         if (!visited[row][col] && ch == board[row][col]) {
             visited[row][col] = true;
+            //判断下一个能否找见
             boolean next = (wordDFS(board, visited, count+1, row + 1, col, word) ||
                             wordDFS(board, visited, count+1, row - 1, col, word) ||
                             wordDFS(board, visited, count+1, row, col + 1, word) ||
@@ -72,7 +73,6 @@ class Solution {
             visited[row][col] = false;
             return next;
         }
-        
         return false;
     }
 }

@@ -43,6 +43,6 @@ class Solution {
         }
         return str.toString();
     }
-}1
+}
 ```
 
